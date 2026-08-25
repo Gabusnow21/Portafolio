@@ -8,7 +8,7 @@
 
 ---
 
-## Fase 0 — Preparación del repositorio
+## Fase 0 — Preparación del repositorio ✅ COMPLETADA
 
 ```
 chore: inicializar repositorio con estructura base del monorepo
@@ -17,6 +17,10 @@ docs: crear readme con stack tecnologico e instrucciones iniciales
 docs: agregar plan tecnico y guia de commits convencionales
 chore: configurar rama develop y proteccion de main
 ```
+
+> **Commits reales realizados (25-Ago-2026):**
+> `d385b03` · `1272846` · `375cd44`
+> Pendiente push a origin.
 
 ## Fase 1 — Backend: dominio y persistencia
 

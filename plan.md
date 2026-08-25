@@ -533,13 +533,20 @@ management.endpoints.web.exposure.include=health,info
 
 ## 8. Plan de Desarrollo Paso a Paso (por fases)
 
-### Fase 0 — Preparación del repositorio
+### Fase 0 — Preparación del repositorio ✅ COMPLETADA
 1. Crear repo GitHub y conectar el local (`git remote add origin ...`, rama `main`).
 2. Crear `.gitignore` raíz global (`.env`, `deploy/.env`, `.DS_Store`).
 3. Documentar en README el stack y cómo levantar.
-4. Proteger rama `main` en GitHub (PR obligatorio opcional).
+4. Crear rama `develop` desde `main`.
 
 Verificar: `git status` limpio, push inicial OK.
+
+**Commits realizados (25-Ago-2026):**
+- `d385b03` chore: agregar gitignore global para env y artefactos de build
+- `1272846` docs: crear readme con stack tecnologico e instrucciones iniciales
+- `375cd44` docs: agregar plan tecnico y guia de commits convencionales
+
+> ⚠️ Pendiente: push a origin (credenciales de GitHub no disponibles en la sesión actual). Ejecutar manualmente: `git push origin main develop`
 
 ### Fase 1 — Backend: dominio y persistencia
 1. Enums `ProjectType`, `ProjectStatus`.
