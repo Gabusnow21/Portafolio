@@ -640,13 +640,18 @@ Verificar: flujo login → token → llamadas protegidas OK; público no puede e
 - `4cb77ce` feat(admin): crear login dashboard con metricas y guard de rutas
 - `7d8f797` feat(app): integrar auth guard interceptor y rutas admin protegidas
 
-### Fase 7 — Dockerización
+### Fase 7 — Dockerización ✅ COMPLETADA
 1. Dockerfiles front/back + nginx.conf + .dockerignore.
 2. `deploy/compose.yaml` + `.env.example` (+ actuator para healthchecks).
 3. Levantar todo local: `docker compose up -d --build`.
 4. Probar dominios locales: añadir `127.0.0.1 tudominio.com api.tudominio.com` a `/etc/hosts` y validar routers de Traefik.
 
 Verificar: `docker compose ps` healthy; SPA y API responden por cada Host.
+
+**Commits realizados (26-Ago-2026):**
+- `d345a63` build(frontend): crear dockerfile multi-etapa node y nginx con .dockerignore
+- `59dca3a` build(backend): crear dockerfile multi-etapa maven y jre alpine con actuator healthcheck
+- `49af586` build(deploy): crear compose con traefik redes healthchecks y env example
 
 ### Fase 8 — Despliegue en Debian con Cloudflare Tunnel
 1. Instalar Docker + compose plugin en el VPS Debian.

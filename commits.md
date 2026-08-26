@@ -139,7 +139,7 @@ test(security): verificar acceso publico vs protegido por rol
 > `4512bbb` · `8de3c2f` · `09b06be` · `4cb77ce` · `7d8f797`
 > Verificación: `./mvnw compile` y `npm run build` exitosos.
 
-## Fase 7 — Dockerización
+## Fase 7 — Dockerización ✅ COMPLETADA
 
 ```
 build(frontend): crear dockerfile multi-etapa node y nginx
@@ -154,6 +154,10 @@ build(deploy): parametrizar variables con env example
 chore(deploy): documentar levantamiento local del stack
 fix(compose): corregir red docker usada por traefik provider
 ```
+
+> **Commits reales realizados (26-Ago-2026):**
+> `d345a63` · `59dca3a` · `49af586`
+> Verificación: `./mvnw compile` exitoso.
 
 ## Fase 8 — Despliegue con Traefik y Cloudflare Tunnel
 
