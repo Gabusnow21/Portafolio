@@ -83,3 +83,10 @@ deploy/init.sql.bak
 # =========================
 .cursor/
 .aider*
+
+# =========================
+# Documentación local (no trackear)
+# =========================
+commits.md
+instructions.md
+plan.md
