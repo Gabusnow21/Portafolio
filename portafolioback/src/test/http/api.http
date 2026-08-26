@@ -1,0 +1,129 @@
+### Variables
+@baseUrl = http://localhost:8080/api
+
+### ============================
+### PROJECTS
+### ============================
+
+### Listar todos los proyectos
+GET {{baseUrl}}/projects?page=0&size=10
+
+### Listar proyectos por tipo WEB
+GET {{baseUrl}}/projects/type/WEB
+
+### Listar proyectos destacados
+GET {{baseUrl}}/projects/featured
+
+### Buscar proyectos
+GET {{baseUrl}}/projects/search?q=portfolio
+
+### Obtener proyecto por ID
+GET {{baseUrl}}/projects/1
+
+### Obtener proyecto por slug
+GET {{baseUrl}}/projects/slug/mi-proyecto
+
+### Crear proyecto
+POST {{baseUrl}}/projects
+Content-Type: application/json
+
+{
+  "title": "Mi Proyecto Portfolio",
+  "shortDescription": "Portfolio web profesional con Angular y Spring Boot",
+  "description": "Proyecto completo de portafolio web con panel de administración, formulario de contacto funcional y despliegue con Docker y Traefik.",
+  "type": "WEB",
+  "status": "COMPLETED",
+  "repoUrl": "https://github.com/Gabusnow21/Portafolio",
+  "demoUrl": "https://tudominio.com",
+  "featured": true
+}
+
+### Actualizar proyecto
+PUT {{baseUrl}}/projects/1
+Content-Type: application/json
+
+{
+  "title": "Mi Proyecto Portfolio Actualizado",
+  "shortDescription": "Portfolio web profesional con Angular y Spring Boot",
+  "description": "Proyecto completo de portafolio web con panel de administración, formulario de contacto funcional y despliegue con Docker y Traefik.",
+  "type": "WEB",
+  "status": "COMPLETED",
+  "repoUrl": "https://github.com/Gabusnow21/Portafolio",
+  "demoUrl": "https://tudominio.com",
+  "featured": true
+}
+
+### Incrementar vistas
+PATCH {{baseUrl}}/projects/1/views
+
+### Eliminar proyecto
+DELETE {{baseUrl}}/projects/1
+
+### ============================
+### TECHNOLOGIES
+### ============================
+
+### Listar todas las tecnologías
+GET {{baseUrl}}/technologies
+
+### Listar por categoría
+GET {{baseUrl}}/technologies/category/frontend
+
+### Crear tecnología
+POST {{baseUrl}}/technologies
+Content-Type: application/json
+
+{
+  "name": "Angular",
+  "category": "frontend",
+  "color": "#DD0031"
+}
+
+### Actualizar tecnología
+PUT {{baseUrl}}/technologies/1
+Content-Type: application/json
+
+{
+  "name": "Angular 20",
+  "category": "frontend",
+  "color": "#DD0031"
+}
+
+### Eliminar tecnología
+DELETE {{baseUrl}}/technologies/1
+
+### ============================
+### CONTACT
+### ============================
+
+### Enviar mensaje de contacto
+POST {{baseUrl}}/contact
+Content-Type: application/json
+
+{
+  "name": "Juan Pérez",
+  "email": "juan@ejemplo.com",
+  "subject": "Interesado en tu portafolio",
+  "message": "Hola, me gustó mucho tu portafolio. ¿Trabajas por proyectos?"
+}
+
+### Listar todos los mensajes
+GET {{baseUrl}}/contact?page=0&size=20
+
+### Listar mensajes no leídos
+GET {{baseUrl}}/contact/unread
+
+### Contar no leídos
+GET {{baseUrl}}/contact/unread/count
+
+### Obtener mensaje por ID
+GET {{baseUrl}}/contact/1
+
+### Marcar como leído
+PATCH {{baseUrl}}/contact/1/read
+
+### Archivar mensaje
+PATCH {{baseUrl}}/contact/1/archive
+
+### Eliminar mensaje
+DELETE {{baseUrl}}/contact/1
