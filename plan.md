@@ -581,7 +581,7 @@ Verificar: CRUD de projects y POST de contacto con curl/Postman.
 - `02227ce` feat(controller): exponer endpoints rest de projects technologies y contact con cors
 - `bf19c13` docs(api): agregar coleccion http para probar endpoints rest
 
-### Fase 3 — Frontend: layout y tema
+### Fase 3 — Frontend: layout y tema ✅ COMPLETADA
 1. Estructura `core/shared/features`.
 2. Variables CSS claro/oscuro + `ThemeService` (signal + localStorage).
 3. Header responsive con menú hamburguesa, footer.
@@ -589,6 +589,13 @@ Verificar: CRUD de projects y POST de contacto con curl/Postman.
 5. Environments dev/prod.
 
 Verificar: `npm start`, navegación entre páginas, toggle de tema persistente.
+
+**Commits realizados (26-Ago-2026):**
+- `d092891` feat(env): generar environments para desarrollo y produccion
+- `07e7d98` feat(theme): definir variables css y theme service con signal y localStorage
+- `c74ec05` feat(layout): crear header responsive footer y modelos del dominio
+- `efd4216` feat(routes): crear componentes placeholder de home projects contact y admin
+- `89866b2` feat(app): integrar rutas lazy providehttpclient header y footer en app root
 
 ### Fase 4 — Frontend: secciones públicas
 1. Home: hero, stack técnico, proyectos destacados.

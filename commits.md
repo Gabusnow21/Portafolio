@@ -63,7 +63,7 @@ docs(api): documentar endpoints en http file o coleccion postman
 > `564d600` · `02227ce` · `bf19c13`
 > Verificación: `./mvnw compile` exitoso.
 
-## Fase 3 — Frontend: layout y tema
+## Fase 3 — Frontend: layout y tema ✅ COMPLETADA
 
 ```
 chore(frontend): reorganizar app en core shared y features
@@ -76,6 +76,10 @@ feat(routes): configurar rutas lazy de home projects contact y admin
 feat(app): integrar providehttpclient en app config
 style(global): aplicar tipografia y espaciado base
 ```
+
+> **Commits reales realizados (26-Ago-2026):**
+> `d092891` · `07e7d98` · `c74ec05` · `efd4216` · `89866b2`
+> Verificación: `npm run build` exitoso (4 lazy chunks generados).
 
 ## Fase 4 — Frontend: secciones públicas
 
