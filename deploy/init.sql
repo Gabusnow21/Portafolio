@@ -40,15 +40,13 @@ CREATE TABLE IF NOT EXISTS projects (
 );
 
 -- ============================================================
--- PROJECT ↔ TECHNOLOGY (N:M) — Hibernate crea la tabla automáticamente
--- Descomentar solo si se necesita gestión manual fuera de JPA:
---
--- CREATE TABLE IF NOT EXISTS project_technologies (
---     project_id     BIGINT NOT NULL REFERENCES projects(id)     ON DELETE CASCADE,
---     technology_id  BIGINT NOT NULL REFERENCES technologies(id) ON DELETE CASCADE,
---     PRIMARY KEY (project_id, technology_id)
--- );
+-- PROJECT ↔ TECHNOLOGY (N:M)
 -- ============================================================
+CREATE TABLE IF NOT EXISTS project_technologies (
+    project_id     BIGINT NOT NULL REFERENCES projects(id)     ON DELETE CASCADE,
+    technology_id  BIGINT NOT NULL REFERENCES technologies(id) ON DELETE CASCADE,
+    PRIMARY KEY (project_id, technology_id)
+);
 
 -- ============================================================
 -- CONTACT MESSAGES
