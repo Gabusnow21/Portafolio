@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ThemeService } from '../../../core/services/theme.service';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +20,9 @@ import { ThemeService } from '../../../core/services/theme.service';
           <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Inicio</a>
           <a routerLink="/projects" routerLinkActive="active" (click)="closeMenu()">Proyectos</a>
           <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contacto</a>
+          @if (authService.isLoggedIn()) {
+            <a routerLink="/admin/dashboard" routerLinkActive="active" (click)="closeMenu()">Admin</a>
+          }
         </nav>
 
         <button class="theme-toggle" (click)="themeService.toggle()" [attr.aria-label]="'Cambiar a tema ' + (themeService.theme() === 'light' ? 'oscuro' : 'claro')">
@@ -139,7 +143,7 @@ import { ThemeService } from '../../../core/services/theme.service';
 export class HeaderComponent {
   menuOpen = signal(false);
 
-  constructor(public themeService: ThemeService) {}
+  constructor(public themeService: ThemeService, public authService: AuthService) {}
 
   toggleMenu(): void {
     this.menuOpen.update(v => !v);

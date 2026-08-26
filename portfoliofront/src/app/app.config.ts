@@ -5,12 +5,13 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { routes } from './app.routes';
 import { apiInterceptor } from './core/interceptors/api.interceptor';
 import { errorInterceptor } from './core/interceptors/error.interceptor';
+import { authInterceptor } from './core/interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withViewTransitions()),
-    provideHttpClient(withFetch(), withInterceptors([apiInterceptor, errorInterceptor]))
+    provideHttpClient(withFetch(), withInterceptors([apiInterceptor, authInterceptor, errorInterceptor]))
   ]
 };
