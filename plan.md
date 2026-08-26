@@ -625,13 +625,20 @@ Verificar: formulario de contacto guarda en BD; listado de proyectos viene de la
 - `e711e10` feat(interceptor): agregar error interceptor para manejo global de http
 - `8bd38a9` feat(proxy): configurar proxy de desarrollo angular a spring boot
 
-### Fase 6 — Panel de administración
+### Fase 6 — Panel de administración ✅ COMPLETADA
 1. `spring-boot-starter-security` + JWT (login `/api/auth/login`).
 2. Endpoints admin protegidos: CRUD proyectos/tecnologías, bandeja de mensajes, métricas agregadas (`/api/metrics`).
 3. Front: login, dashboard con métricas (contadores, últimos mensajes), CRUD.
 4. Usuario admin semilla (BCrypt).
 
 Verificar: flujo login → token → llamadas protegidas OK; público no puede escribir.
+
+**Commits realizados (26-Ago-2026):**
+- `4512bbb` feat(security): agregar spring security con filtro jwt y user details service
+- `8de3c2f` feat(auth): implementar login jwt y metrics endpoint para dashboard admin
+- `09b06be` feat(auth): crear auth service interceptor y guard en frontend
+- `4cb77ce` feat(admin): crear login dashboard con metricas y guard de rutas
+- `7d8f797` feat(app): integrar auth guard interceptor y rutas admin protegidas
 
 ### Fase 7 — Dockerización
 1. Dockerfiles front/back + nginx.conf + .dockerignore.

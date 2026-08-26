@@ -117,7 +117,7 @@ e2e: validar flujo contacto guarda mensaje en postgres
 > `e711e10` · `8bd38a9`
 > Verificación: `npm run build` exitoso.
 
-## Fase 6 — Panel de administración
+## Fase 6 — Panel de administración ✅ COMPLETADA
 
 ```
 feat(security): agregar spring security con filtro jwt
@@ -134,6 +134,10 @@ feat(admin): crear bandeja de mensajes con marcar leido y archivar
 feat(seed): cargar usuario admin inicial con bcrypt
 test(security): verificar acceso publico vs protegido por rol
 ```
+
+> **Commits reales realizados (26-Ago-2026):**
+> `4512bbb` · `8de3c2f` · `09b06be` · `4cb77ce` · `7d8f797`
+> Verificación: `./mvnw compile` y `npm run build` exitosos.
 
 ## Fase 7 — Dockerización
 
