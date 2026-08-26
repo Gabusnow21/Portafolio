@@ -130,12 +130,12 @@ Ver `deploy/.env.example` para la plantilla completa. Las más importantes:
 
 ## Despliegue en Producción (Debian + Cloudflare)
 
-Ver **`plan.md §6`** para la guía completa. Resumen rápido:
+Resumen rápido:
 
 1. Clonar el repo en el servidor.
-2. Configurar `deploy/.env` con variables reales.
+2. Configurar `deploy/.env` con variables reales (ver `deploy/.env.example`).
 3. Crear túnel en Cloudflare Zero Trust y pegar `CF_TUNNEL_TOKEN`.
-4. `docker compose up -d --build`
+4. `cd deploy && docker compose up -d --build`
 5. Backup de PostgreSQL con cron + `pg_dump`.
 
 ---
@@ -144,7 +144,6 @@ Ver **`plan.md §6`** para la guía completa. Resumen rápido:
 
 - **Ramas:** `main` (producción) y `develop` (integración).
 - **Commits:** Conventional Commits en español (`feat:`, `fix:`, `docs:`, etc.).
-- **Commits por fase documentados en:** `commits.md`
 
 ```bash
 git checkout -b develop
@@ -152,16 +151,6 @@ git add .
 git commit -m "feat(ruta): descripción"
 git push -u origin develop
 ```
-
----
-
-## Documentación
-
-| Archivo | Contenido |
-|---|---|
-| [plan.md](./plan.md) | Guía técnica completa: arquitectura, Docker, Traefik, esquema BD, fases de desarrollo |
-| [commits.md](./commits.md) | Conventional commits en español organizados por fase |
-| [instructions.md](./instructions.md) | Especificación original del proyecto |
 
 ---
 
