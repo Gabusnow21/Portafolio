@@ -101,7 +101,7 @@ a11y: mejorar contraste foco y etiquetas aria en formularios
 > `25023a0` · `ed9f74f` · `389f904` · `e015024`
 > Verificación: `npm run build` exitoso (8 lazy chunks generados).
 
-## Fase 5 — Integración Front ↔ Back
+## Fase 5 — Integración Front ↔ Back ✅ COMPLETADA
 
 ```
 feat(http): conectar project service con api real
@@ -112,6 +112,10 @@ feat(toast): notificar resultado de operaciones al usuario
 perf(frontend): precargar rutas criticas con preloadstrategy
 e2e: validar flujo contacto guarda mensaje en postgres
 ```
+
+> **Commits reales realizados (26-Ago-2026):**
+> `e711e10` · `8bd38a9`
+> Verificación: `npm run build` exitoso.
 
 ## Fase 6 — Panel de administración
 

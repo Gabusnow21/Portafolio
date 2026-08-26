@@ -612,13 +612,18 @@ Verificar: UI responsive en móvil/desktop, datos mock mientras tanto.
 - `389f904` feat(features): implementar home projects listado detalle y contacto con form reactivo
 - `e015024` feat(app): registrar interceptor api y ruta de detalle de proyecto
 
-### Fase 5 — Integración Front ↔ Back
+### Fase 5 — Integración Front ↔ Back ✅ COMPLETADA
 1. `provideHttpClient(withFetch())` + interceptor base URL.
 2. Services tipados contra la API real.
 3. Manejo de errores global (interceptor HTTP).
 4. Proxy de desarrollo o CORS verificado end-to-end.
+5. Verificar: formulario de contacto guarda en BD; listado de proyectos viene de la API.
 
 Verificar: formulario de contacto guarda en BD; listado de proyectos viene de la API.
+
+**Commits realizados (26-Ago-2026):**
+- `e711e10` feat(interceptor): agregar error interceptor para manejo global de http
+- `8bd38a9` feat(proxy): configurar proxy de desarrollo angular a spring boot
 
 ### Fase 6 — Panel de administración
 1. `spring-boot-starter-security` + JWT (login `/api/auth/login`).
