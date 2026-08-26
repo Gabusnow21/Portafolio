@@ -548,7 +548,7 @@ Verificar: `git status` limpio, push inicial OK.
 
 > ⚠️ Pendiente: push a origin (credenciales de GitHub no disponibles en la sesión actual). Ejecutar manualmente: `git push origin main develop`
 
-### Fase 1 — Backend: dominio y persistencia
+### Fase 1 — Backend: dominio y persistencia ✅ COMPLETADA
 1. Enums `ProjectType`, `ProjectStatus`.
 2. Entidades JPA: `Project`, `Technology`, `ContactMessage`, `AdminUser` (Lombok).
 3. Relación N:M `Project` ↔ `Technology`.
@@ -557,6 +557,14 @@ Verificar: `git status` limpio, push inicial OK.
 6. Perfiles `application-dev/prod.properties`.
 
 Verificar: `./mvnw spring-boot:run` con PostgreSQL local arranca sin errores.
+
+**Commits realizados (25-Ago-2026):**
+- `e5ad8aa` feat(enums): agregar projecttype y projectstatus
+- `652ac38` feat(entity): crear entidades project technology contactmessage y adminuser
+- `66e173e` feat(repository): agregar repositorios jpa del dominio
+- `d29874a` feat(db): versionar esquema inicial en deploy/init.sql
+- `2625474` feat(api): agregar dto request response jpa auditing y global exception handler
+- `62a5e9c` feat(config): separar perfiles dev y prod en properties
 
 ### Fase 2 — Backend: API REST
 1. DTOs (records) request/response + mappers.

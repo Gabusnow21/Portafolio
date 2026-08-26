@@ -22,7 +22,7 @@ chore: configurar rama develop y proteccion de main
 > `d385b03` · `1272846` · `375cd44`
 > Pendiente push a origin.
 
-## Fase 1 — Backend: dominio y persistencia
+## Fase 1 — Backend: dominio y persistencia ✅ COMPLETADA
 
 ```
 chore(backend): importar proyecto spring boot 4 con maven wrapper
@@ -37,6 +37,10 @@ feat(db): versionar esquema inicial en deploy/init.sql
 feat(config): separar perfiles dev y prod en properties
 test(repository): verificar persistencia de entidades con h2 o testcontainers
 ```
+
+> **Commits reales realizados (25-Ago-2026):**
+> `e5ad8aa` · `652ac38` · `66e173e` · `d29874a` · `2625474` · `62a5e9c`
+> Verificación: `./mvnw compile` exitoso (sin errores).
 
 ## Fase 2 — Backend: API REST
 
