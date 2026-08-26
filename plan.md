@@ -566,7 +566,7 @@ Verificar: `./mvnw spring-boot:run` con PostgreSQL local arranca sin errores.
 - `2625474` feat(api): agregar dto request response jpa auditing y global exception handler
 - `62a5e9c` feat(config): separar perfiles dev y prod en properties
 
-### Fase 2 — Backend: API REST
+### Fase 2 — Backend: API REST ✅ COMPLETADA
 1. DTOs (records) request/response + mappers.
 2. Services + Controllers: `/api/projects`, `/api/technologies`, `/api/contact`.
 3. Validaciones (`@Valid`, `@NotBlank`, `@Email`...).
@@ -575,6 +575,11 @@ Verificar: `./mvnw spring-boot:run` con PostgreSQL local arranca sin errores.
 6. Colección de Postman/HTTP file para probar.
 
 Verificar: CRUD de projects y POST de contacto con curl/Postman.
+
+**Commits realizados (25-Ago-2026):**
+- `564d600` feat(service): implementar services de projects technologies y contact
+- `02227ce` feat(controller): exponer endpoints rest de projects technologies y contact con cors
+- `bf19c13` docs(api): agregar coleccion http para probar endpoints rest
 
 ### Fase 3 — Frontend: layout y tema
 1. Estructura `core/shared/features`.

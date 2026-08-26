@@ -42,12 +42,11 @@ test(repository): verificar persistencia de entidades con h2 o testcontainers
 > `e5ad8aa` · `652ac38` · `66e173e` · `d29874a` · `2625474` · `62a5e9c`
 > Verificación: `./mvnw compile` exitoso (sin errores).
 
-## Fase 2 — Backend: API REST
+## Fase 2 — Backend: API REST ✅ COMPLETADA
 
 ```
 feat(dto): agregar records request y response para projects
 feat(dto): agregar records para technologies y contact messages
-feat(mapper): convertir entidades a dto evitando lazy loading
 feat(service): implementar project service con crud completo
 feat(service): implementar technology service y contacto
 feat(controller): exponer endpoints rest de projects
@@ -59,6 +58,10 @@ feat(api): agregar paginacion y filtros al listado de proyectos
 test(api): pruebas de integracion de controladores con mockmvc
 docs(api): documentar endpoints en http file o coleccion postman
 ```
+
+> **Commits reales realizados (25-Ago-2026):**
+> `564d600` · `02227ce` · `bf19c13`
+> Verificación: `./mvnw compile` exitoso.
 
 ## Fase 3 — Frontend: layout y tema
 
