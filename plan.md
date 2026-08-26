@@ -597,13 +597,20 @@ Verificar: `npm start`, navegación entre páginas, toggle de tema persistente.
 - `efd4216` feat(routes): crear componentes placeholder de home projects contact y admin
 - `89866b2` feat(app): integrar rutas lazy providehttpclient header y footer en app root
 
-### Fase 4 — Frontend: secciones públicas
+### Fase 4 — Frontend: secciones públicas ✅ COMPLETADA
 1. Home: hero, stack técnico, proyectos destacados.
 2. Projects: listado con filtros (tipo web/móvil, tecnología), tarjeta y detalle.
-3. Contact: formulario reactivo con estados de carga/error/éxito.
+3. Contact: formulario reactivo con validaciones.
 4. Componentes compartidos (project-card, badge tech).
+5. Responsive: breakpoints móvil/tablet/desktop.
 
 Verificar: UI responsive en móvil/desktop, datos mock mientras tanto.
+
+**Commits realizados (26-Ago-2026):**
+- `25023a0` feat(http): crear interceptor api y servicios project technology contact
+- `ed9f74f` feat(shared): crear componentes project-card y tech-badge reutilizables
+- `389f904` feat(features): implementar home projects listado detalle y contacto con form reactivo
+- `e015024` feat(app): registrar interceptor api y ruta de detalle de proyecto
 
 ### Fase 5 — Integración Front ↔ Back
 1. `provideHttpClient(withFetch())` + interceptor base URL.
