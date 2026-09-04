@@ -33,8 +33,16 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/api/projects/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/technologies/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/contact").permitAll()
-                .requestMatchers("/api/admin/**", "/api/metrics/**").authenticated()
-                .anyRequest().permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/projects/**").authenticated()
+                .requestMatchers(HttpMethod.PUT, "/api/projects/**").authenticated()
+                .requestMatchers(HttpMethod.PATCH, "/api/projects/**").authenticated()
+                .requestMatchers(HttpMethod.DELETE, "/api/projects/**").authenticated()
+                .requestMatchers(HttpMethod.POST, "/api/technologies/**").authenticated()
+                .requestMatchers(HttpMethod.PUT, "/api/technologies/**").authenticated()
+                .requestMatchers(HttpMethod.DELETE, "/api/technologies/**").authenticated()
+                .requestMatchers("/api/contact/**").authenticated()
+                .requestMatchers("/api/metrics/**").authenticated()
+                .anyRequest().authenticated()
             )
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
