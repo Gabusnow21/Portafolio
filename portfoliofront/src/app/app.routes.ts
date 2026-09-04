@@ -28,6 +28,21 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: 'admin/projects',
+    loadComponent: () => import('./features/admin/admin-projects.component').then(m => m.AdminProjectsComponent),
+    canActivate: [authGuard]
+  },
+  {
+    path: 'admin/technologies',
+    loadComponent: () => import('./features/admin/admin-technologies.component').then(m => m.AdminTechnologiesComponent),
+    canActivate: [authGuard]
+  },
+  {
+    path: 'admin/messages',
+    loadComponent: () => import('./features/admin/admin-messages.component').then(m => m.AdminMessagesComponent),
+    canActivate: [authGuard]
+  },
+  {
     path: 'admin',
     redirectTo: 'admin/dashboard',
     pathMatch: 'prefix'

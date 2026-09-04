@@ -45,3 +45,28 @@ export interface PageResponse<T> {
   size: number;
   number: number;
 }
+
+export type ProjectType = 'WEB' | 'MOBILE';
+export type ProjectStatus = 'IN_PROGRESS' | 'COMPLETED' | 'MAINTAINED';
+
+export interface CreateProjectRequest {
+  title: string;
+  shortDescription: string;
+  description: string;
+  type: ProjectType;
+  status?: ProjectStatus;
+  repoUrl?: string;
+  demoUrl?: string;
+  imageUrl?: string;
+  featured?: boolean;
+  startDate?: string;
+  endDate?: string;
+  technologyIds: number[];
+}
+
+export interface TechnologyRequest {
+  name: string;
+  category: string;
+  icon?: string;
+  color?: string;
+}

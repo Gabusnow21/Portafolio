@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Project, PageResponse } from '../models/portfolio.models';
+import { Project, PageResponse, CreateProjectRequest } from '../models/portfolio.models';
 
 @Injectable({ providedIn: 'root' })
 export class ProjectService {
@@ -36,7 +36,23 @@ export class ProjectService {
     return this.http.get<Project>(`${this.base}/slug/${slug}`);
   }
 
+  getById(id: number): Observable<Project> {
+    return this.http.get<Project>(`${this.base}/${id}`);
+  }
+
   incrementViews(id: number): Observable<void> {
     return this.http.patch<void>(`${this.base}/${id}/views`, {});
+  }
+
+  create(request: CreateProjectRequest): Observable<Project> {
+    return this.http.post<Project>(this.base, request);
+  }
+
+  update(id: number, request: CreateProjectRequest): Observable<Project> {
+    return this.http.put<Project>(`${this.base}/${id}`, request);
+  }
+
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.base}/${id}`);
   }
 }

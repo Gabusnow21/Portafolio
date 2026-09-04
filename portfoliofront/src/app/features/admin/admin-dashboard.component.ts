@@ -49,15 +49,15 @@ interface Metrics {
           </div>
 
           <div class="admin-links">
-            <a routerLink="/admin/dashboard" class="card admin-link-card">
+            <a routerLink="/admin/projects" class="card admin-link-card">
               <h3>Gestionar Proyectos</h3>
               <p>Crear, editar y eliminar proyectos del portafolio.</p>
             </a>
-            <a routerLink="/admin/dashboard" class="card admin-link-card">
+            <a routerLink="/admin/technologies" class="card admin-link-card">
               <h3>Gestionar Tecnologías</h3>
               <p>Administrar las tecnologías del stack.</p>
             </a>
-            <a routerLink="/admin/dashboard" class="card admin-link-card">
+            <a routerLink="/admin/messages" class="card admin-link-card">
               <h3>Bandeja de Mensajes</h3>
               <p>Ver y gestionar mensajes de contacto.</p>
             </a>
