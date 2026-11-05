@@ -87,6 +87,52 @@ npm start
 
 ---
 
+## Sistema de Diseño RPG
+
+La interfaz sigue una estética de RPG pixel art inspirada en **Golden Sun** (identidad:
+ventanas azul profundo, trim dorado y biseles) y **Dragon Quest VII** (legibilidad:
+cajas de diálogo azul sólido con borde crema). No es un tema alternativo: reemplaza
+por completo el diseño anterior.
+
+### Estructura
+
+| Ruta | Contenido |
+|---|---|
+| `src/styles/_tokens.css` | Paleta, tipografía, espaciado, sombras y movimiento |
+| `src/styles/_base.css` | Fuentes, reset, foco visible y `prefers-reduced-motion` |
+| `src/styles/_rpg.css` | Ventanas, botones, badges, menús y utilidades |
+| `src/styles/_legacy.css` | Compatibilidad temporal con controles y `.container` |
+| `src/app/shared/ui/` | `RpgWindow`, `RpgButton`, `StatBar`, `PixelIcon`, `PixelAvatar` |
+| `src/app/features/styleguide/` | Catálogo visual interno en `/styleguide` |
+
+Las fuentes **Pixelify Sans** e **IBM Plex Mono** se sirven localmente desde
+`public/fonts/` con licencia SIL OFL (archivos de licencia incluidos). Pixelify Sans
+se reserva para títulos y elementos de display; IBM Plex Mono se usa en cuerpo,
+formularios y textos largos.
+
+### Datos
+
+- Ficha, habilidades, equipo y biografía: contenido estático tipado en
+  `src/app/features/about/about.content.ts`.
+- Proyectos y tecnologías: se obtienen de la API REST (`/api/projects`,
+  `/api/technologies`). Las vistas incluyen estados de carga, error y vacío.
+
+### Accesibilidad
+
+- Enlace “Saltar al contenido”, landmarks (`header`, `main`, `footer`, `nav`) y un
+  único `h1` por página.
+- Foco visible de alto contraste y navegación completa por teclado; el menú móvil
+  usa `aria-expanded` y se cierra con `Escape`.
+- Formularios con `label` asociado, `aria-invalid`, `aria-describedby`, foco en el
+  primer campo inválido y mensajes de estado con `aria-live`/`role`.
+- Barras de habilidad con `role="progressbar"` y valor textual; nada depende solo
+  del color.
+- Animaciones desactivadas con `prefers-reduced-motion`.
+- Contraste verificado AA y auditoría automática con axe-core sin violaciones en
+  escritorio (1440px) y móvil (390px).
+
+---
+
 ## Stack Completo con Docker
 
 ```bash
