@@ -2,6 +2,8 @@ package com.dev.gabus.portafolioback.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -31,6 +33,18 @@ public class GlobalExceptionHandler {
     public ProblemDetail handleNotFound(ResourceNotFoundException ex) {
         return createProblem(HttpStatus.NOT_FOUND, "Recurso no encontrado",
             URI.create("/errors/not-found"), ex.getMessage());
+    }
+
+    @ExceptionHandler(AuthenticationException.class)
+    public ProblemDetail handleAuthentication(AuthenticationException ex) {
+        return createProblem(HttpStatus.UNAUTHORIZED, "No autenticado",
+            URI.create("/errors/unauthorized"), "Usuario o contraseña incorrectos.");
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public ProblemDetail handleAccessDenied(AccessDeniedException ex) {
+        return createProblem(HttpStatus.FORBIDDEN, "Acceso denegado",
+            URI.create("/errors/forbidden"), "No tiene permisos para esta operación.");
     }
 
     @ExceptionHandler(Exception.class)
