@@ -1,46 +1,93 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { PixelIconComponent } from '../../ui/pixel-icon/pixel-icon.component';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
+  imports: [RouterLink, PixelIconComponent],
   template: `
-    <footer class="footer">
-      <div class="container footer-inner">
-        <p>&copy; {{ currentYear }} Portfolio. Desarrollado con Angular y Spring Boot.</p>
-        <div class="footer-links">
-          <a href="https://github.com/Gabusnow21" target="_blank" rel="noopener">GitHub</a>
-        </div>
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <p class="site-footer__save">
+          <app-pixel-icon name="save" [size]="16" />
+          <span>SAVE POINT</span>
+        </p>
+
+        <p class="site-footer__copy">
+          &copy; {{ currentYear }} Gabus.dev · Front-end &amp; UX/UI
+        </p>
+
+        <nav class="site-footer__links" aria-label="Enlaces del pie de página">
+          <a href="https://github.com/Gabusnow21" target="_blank" rel="noopener">
+            GitHub
+            <app-pixel-icon name="external" [size]="12" />
+          </a>
+          <a routerLink="/contact">Contacto</a>
+          <a routerLink="/styleguide">Design System</a>
+        </nav>
       </div>
     </footer>
   `,
   styles: [`
-    .footer {
+    .site-footer {
       margin-top: auto;
-      padding: 1.5rem 0;
-      border-top: 1px solid var(--border);
-      background: var(--bg-secondary);
+      padding: var(--space-6) 0;
+      background: var(--rpg-ink-2);
+      border-top: 2px solid var(--rpg-gold);
+      box-shadow: 0 -4px 0 rgba(201, 162, 39, 0.12);
     }
-    .footer-inner {
+
+    .site-footer__inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: var(--space-3) var(--space-6);
     }
-    .footer p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
+
+    .site-footer__save {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--rpg-gold-bright);
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      letter-spacing: 0.12em;
     }
-    .footer-links {
+
+    .site-footer__copy {
+      color: var(--rpg-text-dim);
+      font-size: var(--text-xs);
+    }
+
+    .site-footer__links {
       display: flex;
-      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-4);
     }
-    .footer-links a {
-      font-size: 0.85rem;
-      color: var(--text-muted);
+
+    .site-footer__links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: var(--rpg-text-muted);
+      font-size: var(--text-xs);
+      text-decoration: none;
     }
-    .footer-links a:hover {
-      color: var(--accent);
+
+    .site-footer__links a:hover {
+      color: var(--rpg-gold-pale);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 720px) {
+      .site-footer__inner {
+        justify-content: center;
+        text-align: center;
+      }
     }
   `]
 })

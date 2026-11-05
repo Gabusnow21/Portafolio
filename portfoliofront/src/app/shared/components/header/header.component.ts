@@ -1,152 +1,224 @@
 import { Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { ThemeService } from '../../../core/services/theme.service';
 import { AuthService } from '../../../core/services/auth.service';
+import { PixelIconComponent } from '../../ui/pixel-icon/pixel-icon.component';
+import { RpgButtonDirective } from '../../ui/rpg-button/rpg-button.directive';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, PixelIconComponent, RpgButtonDirective],
   template: `
-    <header class="header">
-      <div class="header-inner container">
-        <a routerLink="/" class="logo">Portfolio</a>
+    <header class="site-header" (keydown.escape)="closeMenu()">
+      <div class="container site-header__inner">
+        <a routerLink="/" class="site-logo" (click)="closeMenu()" aria-label="Gabus.dev — Ir al inicio">
+          <span class="site-logo__mark" aria-hidden="true">
+            <app-pixel-icon name="sword" [size]="20" />
+          </span>
+          <span class="site-logo__text">
+            GABUS<span class="site-logo__dot">.</span>DEV
+          </span>
+        </a>
 
-        <button class="menu-toggle" (click)="toggleMenu()" [attr.aria-label]="menuOpen() ? 'Cerrar menú' : 'Abrir menú'">
-          <span class="hamburger" [class.open]="menuOpen()"></span>
+        <button
+          type="button"
+          class="site-menu-toggle"
+          (click)="toggleMenu()"
+          [attr.aria-expanded]="menuOpen()"
+          aria-controls="site-nav"
+          [attr.aria-label]="menuOpen() ? 'Cerrar menú' : 'Abrir menú'"
+        >
+          <app-pixel-icon [name]="menuOpen() ? 'close' : 'menu'" [size]="22" />
         </button>
 
-        <nav class="nav" [class.open]="menuOpen()">
-          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Inicio</a>
-          <a routerLink="/projects" routerLinkActive="active" (click)="closeMenu()">Proyectos</a>
-          <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contacto</a>
+        <nav
+          id="site-nav"
+          class="site-nav"
+          [class.is-open]="menuOpen()"
+          aria-label="Navegación principal"
+        >
+          <a
+            routerLink="/"
+            appRpgButton
+            variant="menu"
+            routerLinkActive
+            [routerLinkActiveOptions]="{ exact: true }"
+            ariaCurrentWhenActive="page"
+            (click)="closeMenu()"
+          >
+            Inicio
+          </a>
+          <a
+            routerLink="/about"
+            appRpgButton
+            variant="menu"
+            routerLinkActive
+            ariaCurrentWhenActive="page"
+            (click)="closeMenu()"
+          >
+            Sobre mí
+          </a>
+          <a
+            routerLink="/projects"
+            appRpgButton
+            variant="menu"
+            routerLinkActive
+            ariaCurrentWhenActive="page"
+            (click)="closeMenu()"
+          >
+            Quest Log
+          </a>
+          <a
+            routerLink="/contact"
+            appRpgButton
+            variant="menu"
+            routerLinkActive
+            ariaCurrentWhenActive="page"
+            (click)="closeMenu()"
+          >
+            Contacto
+          </a>
+
           @if (authService.isLoggedIn()) {
-            <a routerLink="/admin/dashboard" routerLinkActive="active" (click)="closeMenu()">Admin</a>
+            <a
+              routerLink="/admin/dashboard"
+              appRpgButton
+              variant="menu"
+              routerLinkActive
+              ariaCurrentWhenActive="page"
+              (click)="closeMenu()"
+            >
+              Admin
+            </a>
           }
         </nav>
-
-        <button class="theme-toggle" (click)="themeService.toggle()" [attr.aria-label]="'Cambiar a tema ' + (themeService.theme() === 'light' ? 'oscuro' : 'claro')">
-          @if (themeService.theme() === 'light') {
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          } @else {
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          }
-        </button>
       </div>
     </header>
   `,
   styles: [`
-    .header {
+    .site-header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--header-bg);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
+      background: rgba(7, 11, 26, 0.97);
+      border-bottom: 2px solid var(--rpg-gold);
+      box-shadow: 0 4px 0 rgba(201, 162, 39, 0.18);
+      backdrop-filter: blur(8px);
     }
-    .header-inner {
+
+    .site-header__inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 60px;
-      gap: 1.5rem;
+      gap: var(--space-4);
+      min-height: var(--header-h);
     }
-    .logo {
-      font-size: 1.25rem;
+
+    .site-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--rpg-gold-bright);
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
       font-weight: 700;
-      color: var(--text-primary);
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      white-space: nowrap;
     }
-    .nav {
-      display: flex;
-      gap: 1.5rem;
+
+    .site-logo:hover {
+      color: var(--rpg-gold-pale);
     }
-    .nav a {
-      color: var(--text-secondary);
-      font-weight: 500;
-      font-size: 0.9rem;
-      padding: 0.25rem 0;
-      border-bottom: 2px solid transparent;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .nav a:hover,
-    .nav a.active {
-      color: var(--accent);
-      border-bottom-color: var(--accent);
-    }
-    .theme-toggle {
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 0.4rem;
-      cursor: pointer;
-      color: var(--text-secondary);
-      display: flex;
+
+    .site-logo__mark {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: color 0.2s, border-color 0.2s;
+      width: 34px;
+      height: 34px;
+      border: 2px solid var(--rpg-gold);
+      background: var(--rpg-window-deep);
+      box-shadow:
+        inset 2px 2px 0 var(--rpg-bevel-light),
+        inset -2px -2px 0 var(--rpg-bevel-dark),
+        2px 2px 0 var(--rpg-shadow);
+      color: var(--rpg-gold-pale);
     }
-    .theme-toggle:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0.4rem;
-    }
-    .hamburger {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--text-primary);
-      position: relative;
-      transition: background 0.2s;
-    }
-    .hamburger::before,
-    .hamburger::after {
-      content: '';
-      position: absolute;
-      width: 22px;
-      height: 2px;
-      background: var(--text-primary);
-      left: 0;
-      transition: transform 0.2s;
-    }
-    .hamburger::before { top: -7px; }
-    .hamburger::after { top: 7px; }
-    .hamburger.open { background: transparent; }
-    .hamburger.open::before { transform: rotate(45deg) translate(5px, 5px); }
-    .hamburger.open::after { transform: rotate(-45deg) translate(5px, -5px); }
 
-    @media (max-width: 768px) {
-      .menu-toggle { display: block; }
-      .nav {
+    .site-logo__dot {
+      color: var(--rpg-text);
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+    }
+
+    .site-nav .rpg-button--menu {
+      width: auto;
+    }
+
+    .site-menu-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 2px solid var(--rpg-gold);
+      background: var(--rpg-window-deep);
+      color: var(--rpg-gold-pale);
+      box-shadow:
+        inset 2px 2px 0 var(--rpg-bevel-light),
+        inset -2px -2px 0 var(--rpg-bevel-dark),
+        2px 2px 0 var(--rpg-shadow);
+      cursor: pointer;
+    }
+
+    .site-menu-toggle:hover {
+      background: var(--rpg-window);
+      color: var(--rpg-gold-bright);
+    }
+
+    @media (max-width: 820px) {
+      .site-menu-toggle {
+        display: inline-flex;
+      }
+
+      .site-nav {
         display: none;
         position: absolute;
-        top: 60px;
+        top: 100%;
         left: 0;
         right: 0;
-        background: var(--header-bg);
-        backdrop-filter: blur(10px);
         flex-direction: column;
-        padding: 1rem;
-        border-bottom: 1px solid var(--border);
-        gap: 0.5rem;
+        align-items: stretch;
+        gap: 2px;
+        padding: var(--space-3);
+        background: var(--rpg-window-deep);
+        border-bottom: 2px solid var(--rpg-gold);
+        box-shadow: var(--shadow-hard);
       }
-      .nav.open { display: flex; }
-      .nav a { padding: 0.5rem 0; }
+
+      .site-nav.is-open {
+        display: flex;
+      }
+
+      .site-nav .rpg-button--menu {
+        width: 100%;
+        min-height: 44px;
+      }
     }
   `]
 })
 export class HeaderComponent {
   menuOpen = signal(false);
 
-  constructor(public themeService: ThemeService, public authService: AuthService) {}
+  constructor(public authService: AuthService) {}
 
   toggleMenu(): void {
-    this.menuOpen.update(v => !v);
+    this.menuOpen.update((open) => !open);
   }
 
   closeMenu(): void {

@@ -5,19 +5,32 @@ import { Technology } from '../../../core/models/portfolio.models';
   selector: 'app-tech-badge',
   standalone: true,
   template: `
-    <span class="badge" [style.background]="tech.color + '20'" [style.color]="tech.color" [style.border-color]="tech.color + '40'">
+    <span class="tech-badge" [style.--tech-color]="tech.color">
+      <span class="tech-badge__dot" aria-hidden="true"></span>
       {{ tech.name }}
     </span>
   `,
   styles: [`
-    .badge {
-      display: inline-block;
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      border: 1px solid;
+    .tech-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.6rem;
+      border: 1px solid color-mix(in srgb, var(--tech-color) 65%, var(--rpg-text));
+      background: color-mix(in srgb, var(--tech-color) 14%, transparent);
+      color: var(--rpg-text);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      line-height: 1.4;
       white-space: nowrap;
+    }
+
+    .tech-badge__dot {
+      width: 8px;
+      height: 8px;
+      flex: 0 0 auto;
+      background: var(--tech-color);
+      box-shadow: 1px 1px 0 var(--rpg-shadow);
     }
   `]
 })
