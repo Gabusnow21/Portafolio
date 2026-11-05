@@ -70,6 +70,21 @@ portfolio/
 
 ## Desarrollo Local (sin Docker)
 
+**Base de datos (PostgreSQL en el puerto 5433):**
+
+El perfil `dev` espera la base `portfolio_db` con el usuario `portfolio_user` y
+contraseña `devpassword`. Con el clúster local escuchando en 5433:
+
+```bash
+sudo -u postgres psql -p 5433 -c "CREATE ROLE portfolio_user LOGIN PASSWORD 'devpassword';"
+sudo -u postgres psql -p 5433 -c "CREATE DATABASE portfolio_db OWNER portfolio_user;"
+PGPASSWORD=devpassword psql -h 127.0.0.1 -p 5433 -U portfolio_user \
+  -d portfolio_db -f deploy/init.sql
+```
+
+> Si el clúster usa otro puerto, ajusta `spring.datasource.url` en
+> `portafolioback/src/main/resources/application-dev.properties`.
+
 **Backend:**
 ```bash
 cd portafolioback
