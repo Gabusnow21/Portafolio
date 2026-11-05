@@ -2,8 +2,8 @@
 -- Esquema inicial de PostgreSQL para Portafolio Web
 -- Se ejecuta automáticamente en el primer arranque del contenedor de BD
 
-CREATE TYPE project_type   AS ENUM ('WEB', 'MOBILE');
-CREATE TYPE project_status AS ENUM ('IN_PROGRESS', 'COMPLETED', 'MAINTAINED');
+-- Los enums se guardan como VARCHAR para coincidir con @Enumerated(EnumType.STRING)
+-- de JPA y permitir spring.jpa.hibernate.ddl-auto=validate en producción.
 
 -- ============================================================
 -- TECHNOLOGIES
@@ -26,8 +26,8 @@ CREATE TABLE IF NOT EXISTS projects (
     slug              VARCHAR(140) NOT NULL UNIQUE,
     short_description VARCHAR(200) NOT NULL,
     description       TEXT         NOT NULL,
-    type              project_type   NOT NULL DEFAULT 'WEB',
-    status            project_status NOT NULL DEFAULT 'COMPLETED',
+    type              VARCHAR(255) NOT NULL DEFAULT 'WEB',
+    status            VARCHAR(255) NOT NULL DEFAULT 'COMPLETED',
     repo_url          VARCHAR(500),
     demo_url          VARCHAR(500),
     image_url         VARCHAR(500),
