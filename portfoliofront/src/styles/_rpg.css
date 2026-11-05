@@ -1,0 +1,510 @@
+/* =========================================================
+   Primitivas visuales RPG — ventanas, botones, menús y sellos
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   Ventanas
+   --------------------------------------------------------- */
+.rpg-window {
+  position: relative;
+  padding: var(--space-5);
+  background: var(--rpg-window-deep);
+  border: var(--border-w) solid var(--rpg-gold);
+  border-radius: 0;
+  box-shadow:
+    inset 2px 2px 0 var(--rpg-bevel-light),
+    inset -2px -2px 0 var(--rpg-bevel-dark),
+    0 0 0 2px var(--rpg-ink),
+    var(--shadow-hard);
+}
+
+.rpg-window--panel {
+  background:
+    linear-gradient(
+      180deg,
+      var(--rpg-window-light) 0%,
+      var(--rpg-window) 16%,
+      var(--rpg-window-deep) 100%
+    );
+  border-color: var(--rpg-gold);
+}
+
+.rpg-window--panel::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--rpg-bevel-gold);
+  pointer-events: none;
+}
+
+/* Esquinas doradas tipo Golden Sun */
+.rpg-window--panel::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--rpg-gold-bright), var(--rpg-gold-bright)) left top / 12px 2px no-repeat,
+    linear-gradient(var(--rpg-gold-bright), var(--rpg-gold-bright)) left top / 2px 12px no-repeat,
+    linear-gradient(var(--rpg-gold-bright), var(--rpg-gold-bright)) right top / 12px 2px no-repeat,
+    linear-gradient(var(--rpg-gold-bright), var(--rpg-gold-bright)) right top / 2px 12px no-repeat,
+    linear-gradient(var(--rpg-gold-bright), var(--rpg-gold-bright)) left bottom / 12px 2px no-repeat,
+    linear-gradient(var(--rpg-gold-bright), var(--rpg-gold-bright)) left bottom / 2px 12px no-repeat,
+    linear-gradient(var(--rpg-gold-bright), var(--rpg-gold-bright)) right bottom / 12px 2px no-repeat,
+    linear-gradient(var(--rpg-gold-bright), var(--rpg-gold-bright)) right bottom / 2px 12px no-repeat;
+}
+
+.rpg-window--dialogue {
+  background: var(--rpg-navy);
+  border: 3px solid var(--rpg-parchment);
+  box-shadow:
+    inset 2px 2px 0 rgba(255, 255, 255, 0.18),
+    inset -2px -2px 0 rgba(0, 0, 0, 0.6),
+    0 0 0 2px var(--rpg-ink),
+    var(--shadow-hard);
+}
+
+.rpg-window--parchment {
+  background: var(--rpg-parchment);
+  border-color: #8a6d2f;
+  color: #241a0e;
+  box-shadow:
+    inset 2px 2px 0 rgba(255, 255, 255, 0.45),
+    inset -2px -2px 0 rgba(90, 64, 20, 0.28),
+    0 0 0 2px var(--rpg-ink),
+    var(--shadow-hard);
+}
+
+.rpg-window--parchment a {
+  color: #6b4a12;
+}
+
+.rpg-window--parchment .rpg-window__title {
+  color: #6b4a12;
+  border-bottom-color: rgba(107, 74, 18, 0.35);
+}
+
+.rpg-window__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid var(--rpg-bevel-gold);
+  color: var(--rpg-gold-bright);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rpg-window__title::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  background: var(--rpg-gold-bright);
+  box-shadow: 3px 3px 0 var(--rpg-ink);
+}
+
+.rpg-window__body {
+  position: relative;
+}
+
+.rpg-window__body > :last-child {
+  margin-bottom: 0;
+}
+
+/* ---------------------------------------------------------
+   Botones y enlaces de menú
+   --------------------------------------------------------- */
+.rpg-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: 0.65rem 1.15rem;
+  border: var(--border-w) solid var(--rpg-gold);
+  border-radius: 0;
+  background: var(--rpg-window);
+  color: var(--rpg-text);
+  box-shadow:
+    inset 2px 2px 0 var(--rpg-bevel-light),
+    inset -2px -2px 0 var(--rpg-bevel-dark),
+    3px 3px 0 var(--rpg-shadow);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    transform var(--dur-fast) var(--ease-step),
+    box-shadow var(--dur-fast) var(--ease-step),
+    background-color var(--dur-fast) var(--ease-step),
+    color var(--dur-fast) var(--ease-step);
+}
+
+.rpg-button:hover {
+  background: var(--rpg-window-light);
+  color: var(--rpg-gold-pale);
+  transform: translate(-1px, -1px);
+  box-shadow:
+    inset 2px 2px 0 var(--rpg-bevel-light),
+    inset -2px -2px 0 var(--rpg-bevel-dark),
+    4px 4px 0 var(--rpg-shadow);
+}
+
+.rpg-button:active {
+  transform: translate(2px, 2px);
+  box-shadow:
+    inset 2px 2px 0 var(--rpg-bevel-dark),
+    inset -2px -2px 0 var(--rpg-bevel-light),
+    1px 1px 0 var(--rpg-shadow);
+}
+
+.rpg-button--primary {
+  background: var(--rpg-gold);
+  border-color: var(--rpg-gold-pale);
+  color: var(--rpg-ink);
+  text-shadow: none;
+}
+
+.rpg-button--primary:hover {
+  background: var(--rpg-gold-bright);
+  color: var(--rpg-ink);
+}
+
+.rpg-button--secondary {
+  background: var(--rpg-window-deep);
+  color: var(--rpg-gold-pale);
+}
+
+.rpg-button--ghost {
+  background: transparent;
+  border-color: var(--rpg-text-muted);
+  color: var(--rpg-text-muted);
+  box-shadow: none;
+}
+
+.rpg-button--ghost:hover {
+  border-color: var(--rpg-gold-bright);
+  color: var(--rpg-gold-pale);
+  background: rgba(201, 162, 39, 0.08);
+}
+
+.rpg-button--sm {
+  min-height: 36px;
+  padding: 0.4rem 0.75rem;
+  font-size: var(--text-sm);
+}
+
+.rpg-button--lg {
+  min-height: 52px;
+  padding: 0.85rem 1.5rem;
+  font-size: var(--text-lg);
+}
+
+.rpg-button--menu {
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 40px;
+  padding: 0.45rem 0.65rem;
+  border: 0;
+  background: transparent;
+  color: var(--rpg-text);
+  box-shadow: none;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.rpg-button--menu::before {
+  content: '▶';
+  color: var(--rpg-gold-bright);
+  font-family: var(--font-mono);
+  font-size: 0.7em;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition:
+    opacity var(--dur-fast) var(--ease-step),
+    transform var(--dur-fast) var(--ease-step);
+}
+
+.rpg-button--menu:hover,
+.rpg-button--menu:focus-visible,
+.rpg-button--menu[aria-current='page'] {
+  background: rgba(201, 162, 39, 0.1);
+  color: var(--rpg-gold-pale);
+  transform: none;
+  box-shadow: inset 2px 0 0 var(--rpg-gold-bright);
+}
+
+.rpg-button--menu:hover::before,
+.rpg-button--menu:focus-visible::before,
+.rpg-button--menu[aria-current='page']::before {
+  opacity: 1;
+  transform: none;
+}
+
+.rpg-button:disabled,
+.rpg-button[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ---------------------------------------------------------
+   Menús
+   --------------------------------------------------------- */
+.rpg-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rpg-menu--inline {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* ---------------------------------------------------------
+   Sellos, badges y etiquetas
+   --------------------------------------------------------- */
+.rpg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--rpg-gold);
+  background: rgba(201, 162, 39, 0.12);
+  color: var(--rpg-gold-pale);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.rpg-badge--muted {
+  border-color: var(--rpg-text-dim);
+  background: rgba(138, 148, 184, 0.12);
+  color: var(--rpg-text-muted);
+}
+
+.rpg-badge--success {
+  border-color: var(--rpg-exp);
+  background: rgba(123, 216, 143, 0.12);
+  color: #a8f0b8;
+}
+
+.rpg-badge--warning {
+  border-color: var(--rpg-warning);
+  background: rgba(242, 193, 78, 0.12);
+  color: #f7d98a;
+}
+
+.rpg-badge--danger {
+  border-color: var(--rpg-danger);
+  background: rgba(255, 123, 123, 0.12);
+  color: #ffb0b0;
+}
+
+/* Sobre pergamino los sellos necesitan tinta oscura para mantener contraste */
+.rpg-window--parchment .rpg-badge {
+  border-color: #8a6d2f;
+  background: rgba(107, 74, 18, 0.1);
+  color: #5a3f0e;
+}
+
+.rpg-window--parchment .rpg-badge--success {
+  border-color: #2f6b3f;
+  background: rgba(47, 107, 63, 0.12);
+  color: #235a34;
+}
+
+.rpg-window--parchment .rpg-badge--warning {
+  border-color: #8a6a1f;
+  background: rgba(138, 106, 31, 0.14);
+  color: #6b4a12;
+}
+
+.rpg-window--parchment .rpg-badge--danger {
+  border-color: #9b2f2f;
+  background: rgba(155, 47, 47, 0.12);
+  color: #842222;
+}
+
+/* ---------------------------------------------------------
+   Separadores y adornos
+   --------------------------------------------------------- */
+.rpg-divider {
+  height: 2px;
+  border: 0;
+  background:
+    linear-gradient(90deg, transparent, var(--rpg-gold), transparent);
+  opacity: 0.7;
+}
+
+.rpg-divider--dotted {
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--rpg-gold) 0 4px,
+    transparent 4px 8px
+  );
+}
+
+/* ---------------------------------------------------------
+   Layout de secciones
+   --------------------------------------------------------- */
+.rpg-section {
+  padding: var(--space-16) 0;
+}
+
+.rpg-section__head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+}
+
+.rpg-section__eyebrow {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--rpg-gold-bright);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.rpg-section__title {
+  color: var(--rpg-text);
+  font-size: var(--text-3xl);
+  text-transform: uppercase;
+}
+
+.rpg-section__lead {
+  max-width: 62ch;
+  margin-top: var(--space-2);
+  color: var(--rpg-text-muted);
+}
+
+/* ---------------------------------------------------------
+   Prosa para textos largos
+   --------------------------------------------------------- */
+.rpg-prose {
+  max-width: 70ch;
+  color: var(--rpg-text-muted);
+}
+
+.rpg-prose p {
+  margin-bottom: var(--space-4);
+}
+
+.rpg-prose strong {
+  color: var(--rpg-text);
+}
+
+.rpg-prose h2,
+.rpg-prose h3 {
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-2);
+  color: var(--rpg-text);
+}
+
+/* ---------------------------------------------------------
+   Animaciones decorativas
+   --------------------------------------------------------- */
+.rpg-blink {
+  animation: rpg-blink 1.1s steps(2, end) infinite;
+}
+
+@keyframes rpg-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.rpg-float {
+  animation: rpg-float 3.2s steps(4, end) infinite;
+}
+
+@keyframes rpg-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Scanlines opcionales (apagadas por defecto) */
+.rpg-scanlines {
+  position: relative;
+}
+
+.rpg-scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0 3px,
+    rgba(0, 0, 0, 0.18) 3px 4px
+  );
+  mix-blend-mode: multiply;
+}
+
+/* ---------------------------------------------------------
+   Utilidades pixel
+   --------------------------------------------------------- */
+.pixelated {
+  image-rendering: pixelated;
+}
+
+.text-gold {
+  color: var(--rpg-gold-bright);
+}
+
+.text-muted {
+  color: var(--rpg-text-muted);
+}
+
+.text-dim {
+  color: var(--rpg-text-dim);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.cluster {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}

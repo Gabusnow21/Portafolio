@@ -1,0 +1,143 @@
+/* =========================================================
+   Compatibilidad con componentes existentes (fases R1–R4)
+   ========================================================= */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.section {
+  padding: var(--space-16) 0;
+}
+
+.section-title {
+  color: var(--rpg-text);
+  font-size: var(--text-2xl);
+  text-transform: uppercase;
+}
+
+/* Botones legacy -> botones RPG */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: 0.65rem 1.15rem;
+  border: var(--border-w) solid var(--rpg-gold);
+  border-radius: 0;
+  background: var(--rpg-window);
+  color: var(--rpg-text);
+  box-shadow:
+    inset 2px 2px 0 var(--rpg-bevel-light),
+    inset -2px -2px 0 var(--rpg-bevel-dark),
+    3px 3px 0 var(--rpg-shadow);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    transform var(--dur-fast) var(--ease-step),
+    box-shadow var(--dur-fast) var(--ease-step),
+    background-color var(--dur-fast) var(--ease-step);
+}
+
+.btn:hover {
+  background: var(--rpg-window-light);
+  color: var(--rpg-gold-pale);
+  transform: translate(-1px, -1px);
+}
+
+.btn-primary {
+  background: var(--rpg-gold);
+  border-color: var(--rpg-gold-pale);
+  color: var(--rpg-ink);
+}
+
+.btn-primary:hover {
+  background: var(--rpg-gold-bright);
+  color: var(--rpg-ink);
+}
+
+.btn-outline {
+  background: var(--rpg-window-deep);
+  border-color: var(--rpg-gold);
+  color: var(--rpg-gold-pale);
+}
+
+.btn-outline:hover {
+  border-color: var(--rpg-gold-pale);
+  color: var(--rpg-gold-pale);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* Tarjetas legacy -> ventanas RPG */
+.card {
+  position: relative;
+  padding: var(--space-5);
+  background: var(--rpg-window-deep);
+  border: var(--border-w) solid var(--rpg-gold);
+  border-radius: 0;
+  box-shadow:
+    inset 2px 2px 0 var(--rpg-bevel-light),
+    inset -2px -2px 0 var(--rpg-bevel-dark),
+    0 0 0 2px var(--rpg-ink),
+    var(--shadow-hard);
+  transition:
+    transform var(--dur-fast) var(--ease-step),
+    box-shadow var(--dur-fast) var(--ease-step);
+}
+
+.card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow:
+    inset 2px 2px 0 var(--rpg-bevel-light),
+    inset -2px -2px 0 var(--rpg-bevel-dark),
+    0 0 0 2px var(--rpg-ink),
+    var(--shadow-hard-lg);
+}
+
+/* Controles de formulario por defecto */
+input:not([type='checkbox']):not([type='radio']),
+select,
+textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 2px solid var(--rpg-text-dim);
+  border-radius: 0;
+  background: var(--rpg-ink-2);
+  color: var(--rpg-text);
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  line-height: 1.4;
+  transition: border-color var(--dur-fast) var(--ease-step);
+}
+
+input:not([type='checkbox']):not([type='radio']):focus,
+select:focus,
+textarea:focus {
+  border-color: var(--rpg-gold-bright);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(224, 182, 74, 0.25);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--rpg-text-dim);
+  opacity: 1;
+}
+
+/* Scroll horizontal controlado para tablas o grids anchos */
+.overflow-x {
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+}
