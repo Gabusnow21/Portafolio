@@ -51,6 +51,11 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: 'admin/password',
+    loadComponent: () => import('./features/admin/admin-change-password.component').then(m => m.AdminChangePasswordComponent),
+    canActivate: [authGuard]
+  },
+  {
     path: 'admin',
     redirectTo: 'admin/dashboard',
     pathMatch: 'prefix'

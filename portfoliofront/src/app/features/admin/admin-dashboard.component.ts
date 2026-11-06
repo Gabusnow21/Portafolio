@@ -301,6 +301,12 @@ export class AdminDashboardComponent implements OnInit {
       description: 'Ver y gestionar los mensajes de contacto.',
       icon: 'mail',
       route: '/admin/messages'
+    },
+    {
+      title: 'Cambiar contraseña',
+      description: 'Actualiza la contraseña del administrador.',
+      icon: 'lock',
+      route: '/admin/password'
     }
   ];
 
