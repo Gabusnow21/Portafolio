@@ -2,7 +2,7 @@ import { Injectable, signal, inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 export interface LoginResponse {
   token: string;
@@ -36,6 +36,10 @@ export class AuthService {
     }
     this.isLoggedIn.set(false);
     this.router.navigate(['/']);
+  }
+
+  changePassword(currentPassword: string, newPassword: string): Observable<void> {
+    return this.http.put<void>('/auth/password', { currentPassword, newPassword });
   }
 
   getToken(): string | null {
