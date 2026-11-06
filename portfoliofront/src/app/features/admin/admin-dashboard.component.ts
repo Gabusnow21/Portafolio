@@ -19,6 +19,7 @@ interface AdminLink {
   title: string;
   description: string;
   icon: PixelIconName;
+  route: string;
 }
 
 @Component({
@@ -102,7 +103,7 @@ interface AdminLink {
           <app-rpg-window variant="panel" title="Acciones del gremio">
             <div class="admin-links">
               @for (link of adminLinks; track link.title) {
-                <a routerLink="/admin/dashboard" class="admin-link">
+                <a [routerLink]="link.route" class="admin-link">
                   <span class="admin-link__icon" aria-hidden="true">
                     <app-pixel-icon [name]="link.icon" [size]="20" />
                   </span>
@@ -286,17 +287,20 @@ export class AdminDashboardComponent implements OnInit {
     {
       title: 'Gestionar proyectos',
       description: 'Crear, editar y eliminar proyectos del portafolio.',
-      icon: 'scroll'
+      icon: 'scroll',
+      route: '/admin/projects'
     },
     {
       title: 'Gestionar tecnologías',
       description: 'Administrar las tecnologías del stack.',
-      icon: 'spark'
+      icon: 'spark',
+      route: '/admin/technologies'
     },
     {
       title: 'Bandeja de mensajes',
       description: 'Ver y gestionar los mensajes de contacto.',
-      icon: 'mail'
+      icon: 'mail',
+      route: '/admin/messages'
     }
   ];
 
