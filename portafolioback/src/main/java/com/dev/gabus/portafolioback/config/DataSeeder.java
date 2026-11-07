@@ -66,6 +66,13 @@ public class DataSeeder implements CommandLineRunner {
         techs.put("Android", technology("Android", "mobile", "android.svg", "#3DDC84"));
         techs.put("Kotlin", technology("Kotlin", "mobile", "kotlin.svg", "#7F52FF"));
         techs.put("TypeScript", technology("TypeScript", "frontend", "typescript.svg", "#3178C6"));
+        techs.put("PrimeNG", technology("PrimeNG", "frontend", "primeng.svg", "#007AD9"));
+        techs.put("JasperReports", technology("JasperReports", "backend", "jasperreports.svg", "#FF6600"));
+        techs.put("FastAPI", technology("FastAPI", "backend", "fastapi.svg", "#009688"));
+        techs.put("Python", technology("Python", "backend", "python.svg", "#3776AB"));
+        techs.put("SQLite", technology("SQLite", "db", "sqlite.svg", "#003B57"));
+        techs.put("HTMX", technology("HTMX", "frontend", "htmx.svg", "#3D72D7"));
+        techs.put("Tailwind", technology("Tailwind CSS", "frontend", "tailwind.svg", "#06B6D4"));
 
         Map<String, Technology> saved = new LinkedHashMap<>();
         techs.forEach((key, t) -> saved.put(
@@ -136,6 +143,80 @@ public class DataSeeder implements CommandLineRunner {
                         techs.get("Spring"),
                         techs.get("Java"),
                         techs.get("PostgreSQL"),
+                        techs.get("Docker")))
+                .build());
+
+        createProject(Project.builder()
+                .title("miAgua — Gestión de Agua Potable (ADESCO)")
+                .slug("miagua-gestion-agua-potable")
+                .shortDescription("Plataforma para gestión de servicios de agua potable en comunidades: usuarios, propiedades, lecturas, recibos y pagos.")
+                .description("Sistema integral para la gestión de servicios de agua potable en comunidades (ADESCO). "
+                        + "Incluye gestión de usuarios y roles (ADMIN, OPERADOR, VECINO), control de propiedades, "
+                        + "registro de lecturas de medidores, generación automática de recibos, procesamiento de pagos "
+                        + "con comprobantes digitales y notificaciones. Seguridad con JWT en cookies HttpOnly.")
+                .type(ProjectType.WEB)
+                .status(ProjectStatus.MAINTAINED)
+                .featured(true)
+                .repoUrl("https://github.com/Gabusnow21/miAgua")
+                .demoUrl("https://miagua.edumathsv.work")
+                .imageUrl("/projects/miaguaHome.png")
+                .startDate(LocalDate.of(2025, 7, 2))
+                .viewsCount(60)
+                .technologies(Set.of(
+                        techs.get("Angular"),
+                        techs.get("Spring"),
+                        techs.get("Java"),
+                        techs.get("PostgreSQL"),
+                        techs.get("Docker"),
+                        techs.get("TypeScript"),
+                        techs.get("PrimeNG")))
+                .build());
+
+        createProject(Project.builder()
+                .title("Sistema de Gestión de Calificaciones")
+                .slug("sistema-gestion-calificaciones")
+                .shortDescription("Administración académica: grados, materias, notas y boletines PDF con JasperReports.")
+                .description("Aplicación web para la gestión académica, registro de calificaciones y generación de reportes "
+                        + "oficiales en PDF. Incluye CRUD de grados, materias, trimestres y actividades, lógica de notas "
+                        + "con upsert, seguridad basada en roles JWT y motor JasperReports para boletines pixel-perfect.")
+                .type(ProjectType.WEB)
+                .status(ProjectStatus.MAINTAINED)
+                .featured(true)
+                .repoUrl("https://github.com/Gabusnow21/Administrador-de-Notas-Matematicas")
+                .demoUrl("https://gestor.edumathsv.work")
+                .imageUrl("/projects/DashboardEdumath.png")
+                .startDate(LocalDate.of(2025, 6, 24))
+                .viewsCount(50)
+                .technologies(Set.of(
+                        techs.get("Angular"),
+                        techs.get("Spring"),
+                        techs.get("Java"),
+                        techs.get("PostgreSQL"),
+                        techs.get("Docker"),
+                        techs.get("JasperReports")))
+                .build());
+
+        createProject(Project.builder()
+                .title("upSerArch — Compartir PDFs por código")
+                .slug("upserarch-compartir-pdfs")
+                .shortDescription("App minimalista para subir PDFs y descargarlos mediante un código único, con panel admin.")
+                .description("Aplicación web minimalista para homelab que permite subir archivos PDF y descargarlos mediante "
+                        + "un código único. Incluye búsqueda en tiempo real con HTMX, panel de administración protegido, "
+                        + "sobrescritura de archivos si el código ya existe y diseño responsive con Tailwind CSS.")
+                .type(ProjectType.WEB)
+                .status(ProjectStatus.COMPLETED)
+                .featured(false)
+                .repoUrl("https://github.com/Gabusnow21/upSerArch")
+                .demoUrl("https://uparch.edumathsv.work")
+                .imageUrl("/projects/UpsearchHome.png")
+                .startDate(LocalDate.of(2025, 8, 18))
+                .viewsCount(30)
+                .technologies(Set.of(
+                        techs.get("FastAPI"),
+                        techs.get("Python"),
+                        techs.get("SQLite"),
+                        techs.get("HTMX"),
+                        techs.get("Tailwind"),
                         techs.get("Docker")))
                 .build());
     }
